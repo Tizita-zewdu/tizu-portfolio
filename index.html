@@ -1,0 +1,738 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tizita Zewdu's developer portfolio showcasing web development, software projects, and technical skills.">
+  <meta name="theme-color" content="#0b1020">
+  <title>Tizita Zewdu | Developer Portfolio</title>
+
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #0b1020;
+      --surface: #141b30;
+      --surface-2: #1b2440;
+      --text: #f3f4ff;
+      --muted: #a6aec6;
+      --accent: #a99bff;
+      --border: #29314b;
+      --header: rgba(11, 16, 32, .92);
+    }
+
+    body.light {
+      color-scheme: light;
+      --bg: #f7f8fc;
+      --surface: #ffffff;
+      --surface-2: #edf0fa;
+      --text: #17203a;
+      --muted: #59637c;
+      --accent: #6350d8;
+      --border: #dce1ee;
+      --header: rgba(247, 248, 252, .94);
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 85px;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Inter, system-ui, -apple-system, sans-serif;
+      line-height: 1.7;
+      transition: background .25s, color .25s;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; cursor: pointer; }
+
+    .container {
+      width: min(1100px, 90%);
+      margin-inline: auto;
+    }
+
+    .accent { color: var(--accent); }
+    .muted { color: var(--muted); }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: var(--header);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    nav {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo {
+      font-size: 1.35rem;
+      font-weight: 800;
+      letter-spacing: -.7px;
+    }
+
+    .nav-right, .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-size: .93rem;
+    }
+
+    .nav-links a:hover, .text-link:hover { color: var(--accent); }
+
+    .icon-btn {
+      background: var(--surface);
+      color: var(--text);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 8px 12px;
+    }
+
+    .menu-btn { display: none; }
+
+    section { padding: 82px 0; }
+
+    .hero {
+      min-height: 590px;
+      display: flex;
+      align-items: center;
+      background:
+        radial-gradient(ellipse at 80% 35%,
+          rgba(125, 100, 255, .13), transparent 45%);
+    }
+
+    .eyebrow {
+      color: var(--accent);
+      font-weight: 700;
+      font-size: .8rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      max-width: 850px;
+      font-size: clamp(2.7rem, 7vw, 5.2rem);
+      line-height: 1.08;
+      letter-spacing: -3px;
+      margin: 18px 0;
+    }
+
+    h2 {
+      font-size: clamp(1.9rem, 4vw, 2.7rem);
+      line-height: 1.2;
+      letter-spacing: -1px;
+      margin: 0 0 14px;
+    }
+
+    h3 { margin: 0 0 10px; }
+
+    .hero p, .section-intro {
+      max-width: 670px;
+      color: var(--muted);
+      font-size: 1.08rem;
+    }
+
+    .actions {
+      display: flex;
+      gap: 13px;
+      flex-wrap: wrap;
+      margin-top: 28px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 11px 18px;
+      font-weight: 650;
+      transition: transform .2s, opacity .2s;
+    }
+
+    .btn:hover { transform: translateY(-2px); }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #111327;
+      border-color: var(--accent);
+    }
+
+    .btn-secondary { background: var(--surface); }
+
+    .section-head { margin-bottom: 30px; }
+
+    .about-grid, .project-grid, .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 17px;
+      padding: 25px;
+      min-width: 0;
+    }
+
+    .card p { color: var(--muted); }
+
+    .project-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+    .project-card {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .project-icon {
+      width: 48px;
+      height: 48px;
+      display: grid;
+      place-items: center;
+      border-radius: 13px;
+      background: var(--surface-2);
+      color: var(--accent);
+      font-size: 1.45rem;
+      margin-bottom: 20px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 12px 0 20px;
+    }
+
+    .tag {
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 3px 10px;
+      color: var(--muted);
+      font-size: .78rem;
+    }
+
+    .project-card .text-link { margin-top: auto; }
+
+    .skills-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+    .skill {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 16px;
+      border-radius: 12px;
+      text-align: center;
+      font-weight: 600;
+    }
+
+    .timeline {
+      border-left: 2px solid var(--border);
+      padding-left: 22px;
+    }
+
+    .timeline-item { position: relative; margin-bottom: 28px; }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: -29px;
+      top: 9px;
+      width: 10px;
+      height: 10px;
+      background: var(--accent);
+      border-radius: 50%;
+    }
+
+    .contact-card { text-align: center; padding: 42px 24px; }
+    .contact-card p { max-width: 570px; margin: 12px auto; }
+
+    footer {
+      padding: 25px 0;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: .9rem;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    dialog {
+      width: min(540px, 90%);
+      background: var(--surface);
+      color: var(--text);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 28px;
+    }
+
+    dialog::backdrop {
+      background: rgba(0, 0, 0, .72);
+      backdrop-filter: blur(4px);
+    }
+
+    dialog p { color: var(--muted); }
+
+    .modal-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+
+    a:focus-visible, button:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 4px;
+    }
+
+    @media (max-width: 850px) {
+      .project-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .skills-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 600px) {
+      section { padding: 60px 0; }
+      .hero { min-height: 520px; }
+      h1 { letter-spacing: -1.8px; }
+      .about-grid, .project-grid { grid-template-columns: 1fr; }
+      .skills-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .menu-btn { display: inline-flex; }
+      .nav-right { gap: 8px; }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 72px;
+        left: 0;
+        right: 0;
+        padding: 20px 5%;
+        background: var(--bg);
+        border-bottom: 1px solid var(--border);
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+      }
+
+      .nav-links.open { display: flex; }
+      .nav-links a { padding: 12px 0; }
+      .card { padding: 21px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+        animation-duration: .01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav class="container" aria-label="Main navigation">
+      <a class="logo" href="#home" aria-label="Tizita Zewdu home">
+        Tizu<span class="accent">.dev</span>
+      </a>
+
+      <div class="nav-right">
+        <div class="nav-links" id="navLinks">
+          <a href="#about">About</a>
+          <a href="#skills">Skills</a>
+          <a href="#projects">Projects</a>
+          <a href="#experience">Education</a>
+          <a href="#contact">Contact</a>
+        </div>
+
+        <button class="icon-btn" id="themeToggle"
+          aria-label="Switch to light theme" title="Toggle theme">
+          ☀
+        </button>
+
+        <button class="icon-btn menu-btn" id="menuToggle"
+          aria-label="Open navigation menu"
+          aria-expanded="false" aria-controls="navLinks">
+          ☰
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container">
+        <div class="eyebrow">Information Systems · Software Development</div>
+        <h1>Building digital experiences that <span class="accent">solve real problems.</span></h1>
+        <p>
+          I'm Tizita Zewdu, an Information Systems student at Addis Ababa
+          University with an interest in web development and practical
+          software solutions. I enjoy turning ideas into useful digital products.
+        </p>
+
+        <div class="actions">
+          <a class="btn btn-primary" href="#projects">Explore my work ↗</a>
+          <a class="btn btn-secondary" href="#contact">Get in touch</a>
+        </div>
+
+        <div class="actions">
+          <a class="text-link muted"
+             href="https://github.com/Tizita-zewdu"
+             target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+          <a class="text-link muted"
+             href="https://linkedin.com/in/tizita-zewdu-9930a8347"
+             target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">A little about me</div>
+          <h2>Curious mind. <span class="accent">Practical builder.</span></h2>
+        </div>
+
+        <div class="about-grid">
+          <article class="card">
+            <h3>Who I am</h3>
+            <p>
+              I'm studying Information Systems at Addis Ababa University.
+              I'm developing my skills through software projects and hands-on
+              experience, with a focus on building reliable, user-friendly
+              digital experiences.
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>What I enjoy</h3>
+            <p>
+              Working on frontend interfaces, connecting applications to APIs,
+              exploring backend technologies, and learning how technology can
+              address real-world needs.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">My toolkit</div>
+          <h2>Technical <span class="accent">skills</span></h2>
+          <p class="section-intro">
+            Technologies and development areas I've worked with.
+          </p>
+        </div>
+
+        <div class="skills-grid">
+          <div class="skill">HTML5</div>
+          <div class="skill">CSS3</div>
+          <div class="skill">JavaScript</div>
+          <div class="skill">React</div>
+          <div class="skill">Node.js</div>
+          <div class="skill">Java</div>
+          <div class="skill">REST APIs</div>
+          <div class="skill">Git & GitHub</div>
+          <div class="skill">TypeScript</div>
+          <div class="skill">PostgreSQL</div>
+          <div class="skill">Frontend Development</div>
+          <div class="skill">API Integration</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Selected work</div>
+          <h2>Projects I've <span class="accent">worked on</span></h2>
+          <p class="section-intro">
+            Practical projects involving application interfaces, system
+            monitoring, and interactive web experiences.
+          </p>
+        </div>
+
+        <div class="project-grid">
+          <article class="card project-card">
+            <div class="project-icon" aria-hidden="true">▦</div>
+            <h3>Procurement Tracking System</h3>
+            <p>
+              A procurement workflow application. My internship work focuses
+              on frontend development and supporting backend API integration.
+            </p>
+            <div class="tags">
+              <span class="tag">React</span>
+              <span class="tag">TypeScript</span>
+              <span class="tag">REST APIs</span>
+            </div>
+            <button class="btn btn-secondary project-open"
+              data-project="procurement">View details ↗</button>
+          </article>
+
+          <article class="card project-card">
+            <div class="project-icon" aria-hidden="true">⌁</div>
+            <h3>Server Monitoring System</h3>
+            <p>
+              A system monitoring project focused on collecting server health
+              information and communicating monitoring data to a backend.
+            </p>
+            <div class="tags">
+              <span class="tag">Python</span>
+              <span class="tag">Monitoring</span>
+              <span class="tag">APIs</span>
+            </div>
+            <button class="btn btn-secondary project-open"
+              data-project="monitoring">View details ↗</button>
+          </article>
+
+          <article class="card project-card">
+            <div class="project-icon" aria-hidden="true">♡</div>
+            <h3>Interactive Birthday Website</h3>
+            <p>
+              A personalized interactive website featuring animated
+              experiences, a letter, a photo gallery, music, and video.
+            </p>
+            <div class="tags">
+              <span class="tag">React</span>
+              <span class="tag">Vite</span>
+              <span class="tag">CSS</span>
+            </div>
+            <a class="btn btn-secondary"
+              href="https://this-is-for-yo-m3.vercel.app/"
+              target="_blank" rel="noopener noreferrer">Visit live website ↗</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">My journey</div>
+          <h2>Education & <span class="accent">experience</span></h2>
+        </div>
+
+        <div class="card timeline">
+          <article class="timeline-item">
+            <h3>BSc studies in Information Systems</h3>
+            <p class="muted">
+              Addis Ababa University · Expected graduation: 2027
+            </p>
+            <p>
+              Developing knowledge in information systems, software
+              development, and digital solutions.
+            </p>
+          </article>
+
+          <article class="timeline-item">
+            <h3>Development internship</h3>
+            <p class="muted">Ministry of Agriculture · 2026</p>
+            <p>
+              Frontend development for a procurement tracking application,
+              including support for backend API integration.
+            </p>
+          </article>
+
+          <article class="timeline-item">
+            <h3>Volunteer experience</h3>
+            <p class="muted">HOPE worldwide Ethiopia · July 2025 – January 2026</p>
+            <p>
+              Participated in organizing a 5K charity walk in 2025 and
+              supported participants throughout the event.
+            </p>
+          </article>
+        </div>
+
+        <p class="muted" style="margin-top:20px">
+          Certificates and a downloadable resume can be added after their
+          final details and files are confirmed.
+        </p>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="card contact-card">
+          <div class="eyebrow">Let's connect</div>
+          <h2>Have a project or <span class="accent">opportunity?</span></h2>
+          <p>
+            I'm interested in learning, collaborating, and exploring
+            opportunities to grow as a developer. Feel free to reach out.
+          </p>
+          <div class="actions" style="justify-content:center">
+            <a class="btn btn-primary"
+              href="mailto:tizetazewdu@gmail.com">Email me ↗</a>
+            <a class="btn btn-secondary"
+              href="https://linkedin.com/in/tizita-zewdu-9930a8347"
+              target="_blank" rel="noopener noreferrer">Connect on LinkedIn ↗</a>
+            <a class="btn btn-secondary"
+              href="https://github.com/Tizita-zewdu"
+              target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <span>© <span id="year"></span> Tizita Zewdu</span>
+      <span>Designed and built with care.</span>
+    </div>
+  </footer>
+
+  <dialog id="projectModal" aria-labelledby="modalTitle">
+    <div style="display:flex;justify-content:space-between;gap:15px">
+      <h2 id="modalTitle">Project details</h2>
+      <button class="icon-btn" id="modalClose" aria-label="Close dialog">✕</button>
+    </div>
+    <p id="modalDescription"></p>
+    <div class="tags" id="modalTags"></div>
+    <div class="modal-actions">
+      <a id="modalLink" class="btn btn-primary" hidden
+        target="_blank" rel="noopener noreferrer">Open project ↗</a>
+      <button class="btn btn-secondary" id="modalDone">Close</button>
+    </div>
+  </dialog>
+
+  <script>
+    const body = document.body;
+    const themeToggle = document.getElementById("themeToggle");
+    const menuToggle = document.getElementById("menuToggle");
+    const navLinks = document.getElementById("navLinks");
+    const modal = document.getElementById("projectModal");
+
+    // Theme preference
+    const savedTheme = localStorage.getItem("tizu-theme");
+    if (savedTheme === "light") body.classList.add("light");
+
+    function updateThemeButton() {
+      const isLight = body.classList.contains("light");
+      themeToggle.textContent = isLight ? "☾" : "☀";
+      themeToggle.setAttribute(
+        "aria-label",
+        isLight ? "Switch to dark theme" : "Switch to light theme"
+      );
+    }
+
+    updateThemeButton();
+
+    themeToggle.addEventListener("click", () => {
+      body.classList.toggle("light");
+      const theme = body.classList.contains("light") ? "light" : "dark";
+      localStorage.setItem("tizu-theme", theme);
+      updateThemeButton();
+    });
+
+    // Mobile navigation
+    menuToggle.addEventListener("click", () => {
+      const isOpen = navLinks.classList.toggle("open");
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+      menuToggle.setAttribute(
+        "aria-label",
+        isOpen ? "Close navigation menu" : "Open navigation menu"
+      );
+      menuToggle.textContent = isOpen ? "✕" : "☰";
+    });
+
+    navLinks.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("open");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "Open navigation menu");
+        menuToggle.textContent = "☰";
+      });
+    });
+
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+
+    // Project modal content
+    const projects = {
+      procurement: {
+        title: "Procurement Tracking System",
+        description:
+          "A procurement workflow system for managing procurement-related " +
+          "information. My confirmed internship responsibilities focus on " +
+          "frontend development and supporting backend API integration. " +
+          "The source repository link can be added when it is ready to share.",
+        tags: ["React", "TypeScript", "API integration"],
+        url: ""
+      },
+      monitoring: {
+        title: "Server Monitoring System",
+        description:
+          "A server monitoring project involving system health collection " +
+          "and backend communication. The implementation work includes " +
+          "Python-based monitoring components. A public source repository " +
+          "can be linked after its URL is confirmed.",
+        tags: ["Python", "System monitoring", "HTTP APIs"],
+        url: ""
+      }
+    };
+
+    function closeModal() {
+      modal.close();
+    }
+
+    document.querySelectorAll(".project-open").forEach(button => {
+      button.addEventListener("click", () => {
+        const project = projects[button.dataset.project];
+        document.getElementById("modalTitle").textContent = project.title;
+        document.getElementById("modalDescription").textContent =
+          project.description;
+
+        const tags = document.getElementById("modalTags");
+        tags.replaceChildren();
+
+        project.tags.forEach(label => {
+          const tag = document.createElement("span");
+          tag.className = "tag";
+          tag.textContent = label;
+          tags.appendChild(tag);
+        });
+
+        const link = document.getElementById("modalLink");
+        link.hidden = !project.url;
+        if (project.url) link.href = project.url;
+
+        modal.showModal();
+      });
+    });
+
+    document.getElementById("modalClose").addEventListener("click", closeModal);
+    document.getElementById("modalDone").addEventListener("click", closeModal);
+
+    modal.addEventListener("click", event => {
+      if (event.target === modal) closeModal();
+    });
+
+    document.addEventListener("keydown", event => {
+      if (event.key === "Escape" && modal.open) closeModal();
+    });
+  </script>
+</body>
+</html>
