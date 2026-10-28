@@ -8,346 +8,8 @@
   <meta name="theme-color" content="#0b1020">
   <title>Tizita Zewdu | Developer Portfolio</title>
 
-  <style>
-    :root {
-      color-scheme: dark;
-      --bg: #0b1020;
-      --surface: #141b30;
-      --surface-2: #1b2440;
-      --text: #f3f4ff;
-      --muted: #a6aec6;
-      --accent: #a99bff;
-      --border: #29314b;
-      --header: rgba(11, 16, 32, .92);
-    }
+<link rel="stylesheet" href="style.css">
 
-    body.light {
-      color-scheme: light;
-      --bg: #f7f8fc;
-      --surface: #ffffff;
-      --surface-2: #edf0fa;
-      --text: #17203a;
-      --muted: #59637c;
-      --accent: #6350d8;
-      --border: #dce1ee;
-      --header: rgba(247, 248, 252, .94);
-    }
-
-    * { box-sizing: border-box; }
-
-    html {
-      scroll-behavior: smooth;
-      scroll-padding-top: 85px;
-    }
-
-    body {
-      margin: 0;
-      background: var(--bg);
-      color: var(--text);
-      font-family: Inter, system-ui, -apple-system, sans-serif;
-      line-height: 1.7;
-      transition: background .25s, color .25s;
-    }
-
-    a { color: inherit; text-decoration: none; }
-    button { font: inherit; cursor: pointer; }
-
-    .container {
-      width: min(1100px, 90%);
-      margin-inline: auto;
-    }
-
-    .accent { color: var(--accent); }
-    .muted { color: var(--muted); }
-
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      background: var(--header);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid var(--border);
-    }
-
-    nav {
-      min-height: 72px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-    }
-
-    .logo {
-      font-size: 1.35rem;
-      font-weight: 800;
-      letter-spacing: -.7px;
-    }
-
-    .nav-right, .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 22px;
-    }
-
-    .nav-links a {
-      color: var(--muted);
-      font-size: .93rem;
-    }
-
-    .nav-links a:hover, .text-link:hover { color: var(--accent); }
-
-    .icon-btn {
-      background: var(--surface);
-      color: var(--text);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 8px 12px;
-    }
-
-    .menu-btn { display: none; }
-
-    section { padding: 82px 0; }
-
-    .hero {
-      min-height: 590px;
-      display: flex;
-      align-items: center;
-      background:
-        radial-gradient(ellipse at 80% 35%,
-          rgba(125, 100, 255, .13), transparent 45%);
-    }
-
-    .eyebrow {
-      color: var(--accent);
-      font-weight: 700;
-      font-size: .8rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-    }
-
-    h1 {
-      max-width: 850px;
-      font-size: clamp(2.7rem, 7vw, 5.2rem);
-      line-height: 1.08;
-      letter-spacing: -3px;
-      margin: 18px 0;
-    }
-
-    h2 {
-      font-size: clamp(1.9rem, 4vw, 2.7rem);
-      line-height: 1.2;
-      letter-spacing: -1px;
-      margin: 0 0 14px;
-    }
-
-    h3 { margin: 0 0 10px; }
-
-    .hero p, .section-intro {
-      max-width: 670px;
-      color: var(--muted);
-      font-size: 1.08rem;
-    }
-
-    .actions {
-      display: flex;
-      gap: 13px;
-      flex-wrap: wrap;
-      margin-top: 28px;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 11px 18px;
-      font-weight: 650;
-      transition: transform .2s, opacity .2s;
-    }
-
-    .btn:hover { transform: translateY(-2px); }
-
-    .btn-primary {
-      background: var(--accent);
-      color: #111327;
-      border-color: var(--accent);
-    }
-
-    .btn-secondary { background: var(--surface); }
-
-    .section-head { margin-bottom: 30px; }
-
-    .about-grid, .project-grid, .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 20px;
-    }
-
-    .card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 17px;
-      padding: 25px;
-      min-width: 0;
-    }
-
-    .card p { color: var(--muted); }
-
-    .project-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-
-    .project-card {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-    }
-
-    .project-icon {
-      width: 48px;
-      height: 48px;
-      display: grid;
-      place-items: center;
-      border-radius: 13px;
-      background: var(--surface-2);
-      color: var(--accent);
-      font-size: 1.45rem;
-      margin-bottom: 20px;
-    }
-
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin: 12px 0 20px;
-    }
-
-    .tag {
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 3px 10px;
-      color: var(--muted);
-      font-size: .78rem;
-    }
-
-    .project-card .text-link { margin-top: auto; }
-
-    .skills-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-
-    .skill {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      padding: 16px;
-      border-radius: 12px;
-      text-align: center;
-      font-weight: 600;
-    }
-
-    .timeline {
-      border-left: 2px solid var(--border);
-      padding-left: 22px;
-    }
-
-    .timeline-item { position: relative; margin-bottom: 28px; }
-
-    .timeline-item::before {
-      content: "";
-      position: absolute;
-      left: -29px;
-      top: 9px;
-      width: 10px;
-      height: 10px;
-      background: var(--accent);
-      border-radius: 50%;
-    }
-
-    .contact-card { text-align: center; padding: 42px 24px; }
-    .contact-card p { max-width: 570px; margin: 12px auto; }
-
-    footer {
-      padding: 25px 0;
-      border-top: 1px solid var(--border);
-      color: var(--muted);
-      font-size: .9rem;
-    }
-
-    .footer-inner {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 15px;
-      flex-wrap: wrap;
-    }
-
-    dialog {
-      width: min(540px, 90%);
-      background: var(--surface);
-      color: var(--text);
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 28px;
-    }
-
-    dialog::backdrop {
-      background: rgba(0, 0, 0, .72);
-      backdrop-filter: blur(4px);
-    }
-
-    dialog p { color: var(--muted); }
-
-    .modal-actions {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-top: 20px;
-    }
-
-    a:focus-visible, button:focus-visible {
-      outline: 3px solid var(--accent);
-      outline-offset: 4px;
-    }
-
-    @media (max-width: 850px) {
-      .project-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .skills-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-    }
-
-    @media (max-width: 600px) {
-      section { padding: 60px 0; }
-      .hero { min-height: 520px; }
-      h1 { letter-spacing: -1.8px; }
-      .about-grid, .project-grid { grid-template-columns: 1fr; }
-      .skills-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .menu-btn { display: inline-flex; }
-      .nav-right { gap: 8px; }
-
-      .nav-links {
-        display: none;
-        position: absolute;
-        top: 72px;
-        left: 0;
-        right: 0;
-        padding: 20px 5%;
-        background: var(--bg);
-        border-bottom: 1px solid var(--border);
-        flex-direction: column;
-        align-items: stretch;
-        gap: 0;
-      }
-
-      .nav-links.open { display: flex; }
-      .nav-links a { padding: 12px 0; }
-      .card { padding: 21px; }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        scroll-behavior: auto !important;
-        transition-duration: .01ms !important;
-        animation-duration: .01ms !important;
-      }
-    }
-  </style>
 </head>
 
 <body>
@@ -363,6 +25,8 @@
           <a href="#skills">Skills</a>
           <a href="#projects">Projects</a>
           <a href="#experience">Education</a>
+          <a href="#resume">Resume</a>
+          <a href="#certifications">Certifications</a>
           <a href="#contact">Contact</a>
         </div>
 
@@ -418,19 +82,21 @@
           <article class="card">
             <h3>Who I am</h3>
             <p>
-              I'm studying Information Systems at Addis Ababa University.
-              I'm developing my skills through software projects and hands-on
-              experience, with a focus on building reliable, user-friendly
-              digital experiences.
+              I’m an Information Systems student at Addis Ababa University, 
+              passionate Full-Stack Developer and  about building reliable, scalable, and user-friendly digital solutions. 
+              I work across frontend and backend development, creating responsive user interfaces, developing server-side applications 
+              and REST APIs, and integrating databases to deliver complete software solutions. 
+              Through hands-on projects, I continue to strengthen my skills in software engineering, problem-solving, 
+              and modern web technologies.
             </p>
           </article>
 
           <article class="card">
             <h3>What I enjoy</h3>
             <p>
-              Working on frontend interfaces, connecting applications to APIs,
-              exploring backend technologies, and learning how technology can
-              address real-world needs.
+             I enjoy creating intuitive user interfaces, building backend functionality, 
+             connecting applications through APIs, working with databases, 
+             and exploring new technologies to turn ideas into practical solutions.
             </p>
           </article>
         </div>
@@ -480,8 +146,9 @@
             <div class="project-icon" aria-hidden="true">▦</div>
             <h3>Procurement Tracking System</h3>
             <p>
-              A procurement workflow application. My internship work focuses
-              on frontend development and supporting backend API integration.
+             A procurement workflow application for managing procurement operations. 
+             My contributions included backend API endpoint development, API integration, 
+             and integration testing to ensure reliable communication between application components.
             </p>
             <div class="tags">
               <span class="tag">React</span>
@@ -546,30 +213,209 @@
           </article>
 
           <article class="timeline-item">
-            <h3>Development internship</h3>
-            <p class="muted">Ministry of Agriculture · 2026</p>
+            <h3>BSc studies in Accounting and Finance</h3>
+            <p class="muted">
+              Alpha University College · Expected graduation: 2029
+            </p>
             <p>
-              Frontend development for a procurement tracking application,
-              including support for backend API integration.
+              Studying accounting principles, financial management, and business operations.
             </p>
           </article>
 
           <article class="timeline-item">
-            <h3>Volunteer experience</h3>
+            <h3>Development internship</h3>
+            <p class="muted">Ministry of Agriculture · 2026</p>
+            <p>
+              Backend development for a procurement tracking application,
+              including support for API integration.
+            </p>
+            <p class="muted">Innovation and technology development bureaue · 2026</p>
+            <p>
+              Frontend development for Automated backup and server monitoring system,
+              including support for agent development and backend API integration.
+            </p>
+          </article>
+
+          <article class="timeline-item">
+            <h3>Administration & Social Media Volunteer</h3>
             <p class="muted">HOPE worldwide Ethiopia · July 2025 – January 2026</p>
             <p>
-              Participated in organizing a 5K charity walk in 2025 and
-              supported participants throughout the event.
+              Supported administrative activities and social media management. 
+              Helped organize the 2025 charity walk and supported participants throughout the event.
+            </p>
+          </article>
+
+          <article class="timeline-item">
+            <h3>Full-Stack Developer Intern</h3>
+            <p class="muted">Datheon · 2026</p>
+            <p>
+             Developing practical software projects across frontend and backend technologies, 
+             including application interfaces, API development, integration, and testing.
             </p>
           </article>
         </div>
 
-        <p class="muted" style="margin-top:20px">
-          Certificates and a downloadable resume can be added after their
-          final details and files are confirmed.
-        </p>
       </div>
     </section>
+
+
+<!-- Resume Section -->
+<section id="resume">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">My qualifications</div>
+      <h2>Resume &amp; <span class="accent">credentials</span></h2>
+      <p class="section-intro">
+        Explore my educational background, technical skills,
+        projects, and professional experience.
+      </p>
+    </div>
+
+    <div class="about-grid">
+      <article class="card">
+        <div class="project-icon" aria-hidden="true">📄</div>
+        <h3>My Resume</h3>
+        <p>
+          My resume highlights my Information Systems studies,
+          full-stack development skills, practical software
+          projects, and relevant experience.
+        </p>
+
+        <div class="actions">
+          <a
+            class="btn btn-primary"
+            href="assets/tizita-zewdu-cv.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            View Resume ↗
+          </a>
+
+          <a
+            class="btn btn-secondary"
+            href="assets/tizita-zewdu-cv.pdf"
+            download
+          >
+            Download CV ↓
+          </a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="project-icon" aria-hidden="true">🎓</div>
+        <h3>Professional Development</h3>
+        <p>
+          I continuously develop my technical knowledge through
+          practical projects, professional learning, and
+          relevant training in software development and technology.
+        </p>
+        <a class="text-link" href="#certifications">
+          Explore my certificates ↓
+        </a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- Certifications Section -->
+<section id="certifications">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Learning &amp; achievements</div>
+      <h2>My <span class="accent">certifications</span></h2>
+      <p class="section-intro">
+        Certifications and training that support my continuous
+        learning and professional development.
+      </p>
+    </div>
+
+    <div class="project-grid">
+      <!-- Certificate 1 -->
+      <article class="card project-card">
+        <div class="project-icon" aria-hidden="true">🏅</div>
+        <h3>Cybersecurity Certificate</h3>
+        <p>
+          Certificate related to cybersecurity and security
+          fundamentals.
+        </p>
+        <div class="tags">
+          <span class="tag">Cybersecurity</span>
+          <span class="tag">Professional Learning</span>
+        </div>
+        <a
+          class="btn btn-secondary"
+          href="assets/certificates/cybersecurity-certificate.jpg"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          View Certificate ↗
+        </a>
+      </article>
+      <article class="card project-card">
+        <div class="project-icon" aria-hidden="true">🏅</div>
+        <h3>cybersecurity-fundamintals</h3>
+        <p>
+          Certificate related to cybersecurity and security
+          fundamentals.
+        </p>
+        <div class="tags">
+          <span class="tag">Cybersecurity</span>
+          <span class="tag">Professional Learning</span>
+        </div>
+        <a
+          class="btn btn-secondary"
+          href="assets/certificates/cybersecurity-fundamintals.jpg"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          View Certificate ↗
+        </a>
+      </article>
+      
+      <article class="card project-card">
+        <div class="project-icon" aria-hidden="true">🏅</div>
+        <h3>project-management</h3>
+        <p>
+          Certificate related to project management and leadership.
+        </p>
+        <div class="tags">
+          <span class="tag">Project Management</span>
+          <span class="tag">Professional Learning</span>
+        </div>
+        <a
+          class="btn btn-secondary"
+          href="assets/certificates/project-management.jpg"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          View Certificate ↗
+        </a>
+      </article>
+
+      <article class="card project-card">
+        <div class="project-icon" aria-hidden="true">🏅</div>
+        <h3>Certificate of Service</h3>
+        <p>
+          Certificate of service.
+        </p>
+        <div class="tags">
+          <span class="tag">Certificate of Service</span>
+          <span class="tag">Professional Learning</span>
+        </div>
+        <a
+          class="btn btn-secondary"
+          href="assets/certificates/certificate-of-service.jpg"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          View Certificate ↗
+        </a>
+      </article>
+
+      <!-- Add another card for each certificate you have earned -->
+    </div>
+  </div>
+</section>
 
     <section id="contact">
       <div class="container">
@@ -669,28 +515,86 @@
       new Date().getFullYear();
 
     // Project modal content
-    const projects = {
-      procurement: {
-        title: "Procurement Tracking System",
-        description:
-          "A procurement workflow system for managing procurement-related " +
-          "information. My confirmed internship responsibilities focus on " +
-          "frontend development and supporting backend API integration. " +
-          "The source repository link can be added when it is ready to share.",
-        tags: ["React", "TypeScript", "API integration"],
-        url: ""
-      },
-      monitoring: {
-        title: "Server Monitoring System",
-        description:
-          "A server monitoring project involving system health collection " +
-          "and backend communication. The implementation work includes " +
-          "Python-based monitoring components. A public source repository " +
-          "can be linked after its URL is confirmed.",
-        tags: ["Python", "System monitoring", "HTTP APIs"],
-        url: ""
-      }
-    };
+    
+const projects = {
+  procurement: {
+    title: "Procurement Tracking System",
+
+    description: `
+      <h3>Project Overview</h3>
+      <p>
+        A procurement workflow application developed for the
+        Ministry of Agriculture to manage procurement-related
+        information and support processes such as project planning,
+        activities, contracts, payments, and supplier management.
+      </p>
+
+      <h3>My Contribution</h3>
+      <p>
+        Contributed to backend development by implementing API
+        endpoints, integrating APIs with application workflows,
+        and performing integration testing to verify that different
+        components communicated and functioned correctly.
+      </p>
+
+      <h3>Key Responsibilities</h3>
+      <ul>
+        <li>Developed and maintained backend API endpoints.</li>
+        <li>Integrated APIs with application functionality.</li>
+        <li>
+          Performed integration testing to validate API requests,
+          responses, and interactions between components.
+        </li>
+        <li>
+          Debugged issues and helped improve backend reliability.
+        </li>
+      </ul>
+
+      <h3>Technologies</h3>
+      <p>
+        Node.js, TypeScript, Express.js, REST APIs,
+        Prisma ORM, and PostgreSQL.
+      </p>
+    `,
+
+    tags: [
+      "Node.js",
+      "TypeScript",
+      "Express.js",
+      "REST APIs",
+      "Prisma ORM",
+      "PostgreSQL"
+    ],
+
+    url: ""
+  },
+
+  monitoring: {
+    title: "Server Monitoring System",
+
+    description: `
+      <h3>Project Overview</h3>
+      <p>
+        A server monitoring solution designed to collect system
+        health information and communicate monitoring data to
+        a backend for tracking and review.
+      </p>
+
+      <h3>My Contribution</h3>
+      <p>
+        Worked on the frontend interface for presenting server
+        monitoring information using React and TypeScript.
+      </p>
+
+      <h3>Technologies</h3>
+      <p>React, TypeScript, and HTTP APIs.</p>
+    `,
+
+    tags: ["React", "TypeScript","HTTP APIs"],
+
+    url: ""
+  }
+};
 
     function closeModal() {
       modal.close();
@@ -700,7 +604,7 @@
       button.addEventListener("click", () => {
         const project = projects[button.dataset.project];
         document.getElementById("modalTitle").textContent = project.title;
-        document.getElementById("modalDescription").textContent =
+        document.getElementById("modalDescription").innerHTML =
           project.description;
 
         const tags = document.getElementById("modalTags");
